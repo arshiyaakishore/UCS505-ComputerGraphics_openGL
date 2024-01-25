@@ -1,0 +1,68 @@
+#include<windows.h>
+#include<gl/GL.h>
+#include<gl/glut.h>
+
+void myInit(void)
+{
+	glClearColor(1.0, 1.0, 1.0, 0.0);
+	glPointSize(4.0);
+	glMatrixMode(GL_PROJECTION);
+	gluOrtho2D(-200, 640.0, -200.0, 480.0);
+}
+
+void display(void)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_QUADS);
+	glColor3f(0.70, 0.35, 0.00);
+	glVertex2i(100,300);
+	glVertex2i(100, 0);
+	glVertex2i(300, 0);
+	glVertex2i(300, 300);
+	glEnd();
+
+	glBegin(GL_TRIANGLES);
+	glColor3f(0.70, 0.35, 0.00);
+	glVertex2i(300, 300);
+	glVertex2i(200, 450);
+	glVertex2i(100, 300);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(1.00, 0.40, 0.80);
+	glVertex2i(150, 140);
+	glVertex2i(150, 0);
+	glVertex2i(250, 0);
+	glVertex2i(250, 140);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.20, 1.00, 1.00);
+	glVertex2i(150, 320);
+	glVertex2i(150, 220);
+	glVertex2i(250, 220);
+	glVertex2i(250, 320);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0, 0,0);
+	glVertex2i(250, 375);
+	glVertex2i(300, 300);
+	glVertex2i(300, 400);
+	glVertex2i(250, 420);
+	glEnd();
+
+	glFlush();
+}
+void main(int argc, char** argv)
+{
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowSize(640, 480);
+	glutInitWindowPosition(100, 220);
+
+	glutCreateWindow("Primitive Display");
+	glutDisplayFunc(display);
+	myInit();
+	glutMainLoop();
+}
