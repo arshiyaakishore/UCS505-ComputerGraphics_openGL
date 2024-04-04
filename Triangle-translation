@@ -1,0 +1,61 @@
+#include <GL/glut.h>
+#include <iostream>
+
+class Renderer {
+public:
+    static void drawTriangle() {
+        glBegin(GL_TRIANGLES);
+        glVertex2f(-0.5f, -0.5f);
+        glVertex2f(0.5f, -0.5f);
+        glVertex2f(0.0f, 0.5f);
+        glEnd();
+    }
+
+    static void init() {
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    }
+
+    static void resize(int w, int h) {
+        glViewport(0, 0, w, h);
+    }
+
+    static void display() {
+        glClear(GL_COLOR_BUFFER_BIT);
+        glLoadIdentity();
+        glOrtho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawTriangle();
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glScalef(0.5f, 0.5f, 1.0f); // resize to 50%
+        drawTriangle();
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glRotatef(45.0f, 0.0f, 0.0f, 1.0f); // rotate by 45 degrees
+        drawTriangle();
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glTranslatef(0.5f, 0.5f, 0.0f); // translate
+        drawTriangle();
+        glutSwapBuffers();
+    }
+
+    static Renderer* renderer; // Static pointer to a Renderer used in the glut callback functions
+};
+
+Renderer* Renderer::renderer;
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 600);
+    glutCreateWindow("Triangle Renderer");
+
+    Renderer::init();
+    Renderer::renderer = new Renderer();
+
+    glutReshapeFunc(Renderer::resize);
+    glutDisplayFunc(Renderer::display);
+    glutMainLoop();
+
+    delete Renderer::renderer;
+
+    return 0;
+}
