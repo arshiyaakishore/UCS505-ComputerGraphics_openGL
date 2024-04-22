@@ -15,6 +15,7 @@ void displayWindow() {
 	gluOrtho2D(0.0, 100.0, 0.0, 100.0);
 }
 
+
 // POINT
 void displayPoint() {
 	glClearColor(0, 0, 0, 0);
