@@ -9,6 +9,7 @@ int ellipseYCenter = 250;
 int ellipseA = 200; // Horizontal radius
 int ellipseB = 100; // Vertical radius
 
+
 void plotEllipsePoints(int x, int y) {
     glBegin(GL_POINTS);
     glVertex2i(x + ellipseXCenter, y + ellipseYCenter);
