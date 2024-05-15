@@ -4312,12 +4312,8 @@ int main(int argc, char** argv) {
 
     cout << "Project Title: Traffic Signal In The City \n" << endl;
     cout << "Group Member :" << endl;
-    cout << "Razib Saraff \t\t 20-42949-1" << endl;
-    cout << "Shourov Bhowmick \t\t 20-43130-1" << endl;
-    cout << "Shaibal Podder \t\t 20-43087-1" << endl;
-    cout << "Alincon Starlin Halder \t\t 20-42542-1" << endl;
-    cout << "Md. Sohanur Rahman Shohan \t\t 20-43672-2" << endl;
-    cout << "Md. Ahanaf Afique \t\t 20-43291-1" << endl;
+    cout << "Arshiya Kishore" << endl;
+   
     glutDisplayFunc(start);
     inigl();
     glutTimerFunc(30, update_windmill,0);
